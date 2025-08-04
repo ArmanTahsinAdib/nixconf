@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  pkgs-stable,
+  ...
+}:
 
 {
 
@@ -26,7 +31,9 @@
       wf-recorder
     ];
 
-    file = { ".config/nvim".source = ./dots/nvim; };
+    file = {
+      ".config/nvim".source = ./dots/nvim;
+    };
 
     sessionVariables = {
       XDG_CURRENT_DESKTOP = "Hyprland";
@@ -113,7 +120,9 @@
         a = "add";
         i = "init";
       };
-      delta = { enable = true; };
+      delta = {
+        enable = true;
+      };
       lfs.enable = true;
     };
 
@@ -121,7 +130,10 @@
       enable = true;
       settings = {
         theme = {
-          activeBorderColor = [ "#cba6f7" "bold" ];
+          activeBorderColor = [
+            "#cba6f7"
+            "bold"
+          ];
           inactiveBorderColor = [ "#a6adc8" ];
           optionsTextColor = [ "#89b4fa" ];
           selectedLineBgColor = [ "#313244" ];
@@ -130,7 +142,9 @@
           unstagedChangesColor = [ "#f38ba8" ];
           defaultFgColor = [ "#cdd6f4" ];
           searchingActiveBorderColor = [ "#f9e2af" ];
-          authorColors = { "*" = [ "#b4befe" ]; };
+          authorColors = {
+            "*" = [ "#b4befe" ];
+          };
         };
       };
 
@@ -153,7 +167,10 @@
     portal = {
       enable = true;
       xdgOpenUsePortal = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk xdg-desktop-portal ];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal
+      ];
     };
     userDirs = {
       enable = true;
@@ -176,4 +193,3 @@
     allowUnfree = true;
   };
 }
-

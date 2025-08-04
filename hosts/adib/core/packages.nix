@@ -1,8 +1,11 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   environment.systemPackages = with pkgs; [
-    celluloid
+    comma
     gthumb
     gnome-clocks
     nautilus
@@ -11,7 +14,7 @@
     jq
     rustup
     python314Full
-    nixfmt-classic
+    nixfmt-rfc-style
     unzip
     yazi
     btop
@@ -35,7 +38,7 @@
     eza
     tree
     zoxide
-    vscode-fsh
+    vscode
     obsidian
     spotify
     libreoffice
@@ -52,5 +55,7 @@
     font-manager
     playerctl
     asciinema
+    psmisc
+    nixd
   ];
 }

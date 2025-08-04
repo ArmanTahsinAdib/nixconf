@@ -3,16 +3,27 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    grub2-theme.url = "github:vinceliuice/grub2-themes";
     flake-utils.url = "github:numtide/flake-utils";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland = {
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
@@ -21,10 +32,9 @@
     };
 
     swww.url = "github:LGFae/swww";
+
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";
-
-      # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
       inputs.hyprland.follows = "hyprland";
     };
     hyprpanel = {
@@ -34,42 +44,74 @@
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
-      # to have it up-to-date or simply don't specify the nixpkgs input
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix/24.11";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-index-database, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      disko,
+      home-manager,
+      nix-index-database,
+      grub2-theme,
+      spicetify-nix,
+      ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
+        config = {
+          allowUnfree = true;
+        };
         inherit system;
-        overlays = [ self.overlays.default ];
       };
-    in {
+      pkgs-stable = import nixpkgs-stable {
+        config = {
+          allowUnfree = true;
+        };
+        inherit system;
+      };
+      overlays = [
+        inputs.neovim-nightly-overlay.overlays.default
+      ];
+    in
+    {
       nixosConfigurations = {
         adib = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            nix-index-database.hmModules.nix-index
-
+            disko.nixosModules.disko
+            nix-index-database.homeModules.nix-index
             home-manager.nixosModules.home-manager
+            grub2-theme.nixosModules.default
+            nix-index-database.nixosModules.nix-index
+            spicetify-nix.homeManagerModules.spicetify
             {
+              programs.nix-index-database.comma.enable = true;
+              nixpkgs.overlays = overlays;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.adib = import ./hosts/adib/home.nix;
             }
             ./hosts/adib/configuration.nix
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit
+              inputs
+              pkgs-stable
+              system
+              ;
+          };
         };
       };
-
-      overlays.default = import ./overlays/thunar.nix;
-
-      packages.${system}.sddm-sequoia =
-        pkgs.callPackage ./pkgs/sddm-sequoia { };
     };
 }
-

@@ -1,4 +1,13 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ./eww.nix
+    ./hyprlock.nix
+    ./misc.nix
+  ];
   wayland = {
     windowManager.hyprland = {
       enable = true;
@@ -15,7 +24,7 @@
       settings = {
         monitor = ",highres,auto,1";
         exec-once = [
-          "${pkgs.mpv}/bin/mpv ~/nixos/hosts/arman-adib/dots/computer-startup.mp3 &"
+          "${pkgs.mpv}/bin/mpv ~/nixos/hosts/adib/dots/computer-startup.mp3 &"
           "${pkgs.swaync}/bin/swaync &"
           "${pkgs.swww}/bin/swww-daemon &"
           "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &"
@@ -39,14 +48,20 @@
           "$mod, A, exec $menu"
           "SUPER_SHIFT, W, exec, pkill waybar && waybar"
 
-        ] ++ (builtins.concatLists (builtins.genList (i:
-          let ws = i + 1;
-          in [
-            "$mod, code:1${toString i}, workspace, ${toString ws}"
-            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-          ]) 9));
+        ]
+        ++ (builtins.concatLists (
+          builtins.genList (
+            i:
+            let
+              ws = i + 1;
+            in
+            [
+              "$mod, code:1${toString i}, workspace, ${toString ws}"
+              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            ]
+          ) 9
+        ));
       };
     };
   };
 }
-
