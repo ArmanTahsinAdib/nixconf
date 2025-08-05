@@ -8,9 +8,9 @@
 {
 
   imports = [
-    ../../modules/home-manager/terminal/terminal.nix
-    ../../modules/home-manager/btop.nix
-    ../../modules/home-manager/fzf.nix
+    # ../../modules/home-manager/terminal/terminal.nix
+    # ../../modules/home-manager/btop.nix
+    # ../../modules/home-manager/fzf.nix
   ];
 
   home = {

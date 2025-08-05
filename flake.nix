@@ -8,6 +8,12 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    inputs.agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,6 +66,7 @@
       nixpkgs,
       nixpkgs-stable,
       disko,
+      agenix,
       home-manager,
       nix-index-database,
       grub2-theme,
@@ -90,7 +97,7 @@
           inherit system;
           modules = [
             disko.nixosModules.disko
-            nix-index-database.homeModules.nix-index
+            agenix.nixosModules.default
             home-manager.nixosModules.home-manager
             grub2-theme.nixosModules.default
             nix-index-database.nixosModules.nix-index
