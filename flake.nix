@@ -97,7 +97,7 @@
           inherit system;
           modules = [
             disko.nixosModules.disko
-            agenix.nixosModules.default
+            # agenix.nixosModules.default
             home-manager.nixosModules.home-manager
             grub2-theme.nixosModules.default
             nix-index-database.nixosModules.nix-index
