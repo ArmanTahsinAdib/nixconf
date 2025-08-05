@@ -12,6 +12,7 @@ in
     ./hardware-configuration.nix
     ./core/packages.nix
     ./core/fonts.nix
+    inputs.home-manager.nixosModules.default
   ];
 
   boot = {

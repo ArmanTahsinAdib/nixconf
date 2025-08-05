@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake";
+  description = "Adib's dope NixOS config";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -105,7 +105,6 @@
             {
               programs.nix-index-database.comma.enable = true;
               nixpkgs.overlays = overlays;
-              home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.adib = import ./hosts/adib/home.nix;
