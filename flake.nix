@@ -105,10 +105,6 @@
             {
               programs.nix-index-database.comma.enable = true;
               nixpkgs.overlays = overlays;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              # home-manager.useGlobalPkgs = true;
-              # home-manager.useUserPackages = true;
-              home-manager.users.adib = import ./hosts/adib/home.nix;
             }
             ./hosts/adib/configuration.nix
           ];

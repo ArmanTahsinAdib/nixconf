@@ -15,6 +15,10 @@ in
     inputs.home-manager.nixosModules.default
   ];
 
+  home-manager.extraSpecialArgs = { inherit inputs; };
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.adib = import ./home.nix;
   boot = {
     kernelPackages = pkgs.linuxPackages_testing;
     kernelParams = [
