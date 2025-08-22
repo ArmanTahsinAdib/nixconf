@@ -1,0 +1,63 @@
+{
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  environment.systemPackages = with pkgs; [
+    inputs.swww.packages.${pkgs.system}.swww
+    nix-prefetch-github
+    comma
+    gthumb
+    gnome-clocks
+    nautilus
+    nodejs_24
+    gcc
+    jq
+    rustup
+    python314Full
+    nixfmt-rfc-style
+    unzip
+    yazi
+    btop
+    duf
+    tokei
+    cava
+    asciiquarium-transparent
+    cmatrix
+    kitty
+    chafa
+    timg
+    tdf
+    fastfetch
+    nitch
+    lolcat
+    figlet
+    fortune
+    tlrc
+    mdcat
+    bat
+    eza
+    tree
+    zoxide
+    vscode
+    obsidian
+    spotify
+    libreoffice
+    gimp3-with-plugins
+    spotifyd
+    fzf
+    fd
+    mpv
+    libnotify
+    protonvpn-gui
+    networkmanagerapplet
+    libsForQt5.okular
+    gcolor3
+    font-manager
+    playerctl
+    asciinema
+    psmisc
+    nixd
+  ];
+}

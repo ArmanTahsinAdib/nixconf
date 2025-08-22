@@ -1,0 +1,12 @@
+{
+  "BraveRewardsDisabled": true,
+  "BraveWalletDisabled": true,
+  "BraveVPNDisabled": true,
+  "BraveNewsDisabled": true,
+  "BraveTalkDisabled": true,
+  "BraveShieldsDisabledForUrls": [
+    "https://twitter.com",
+    "https://www.chatgpt.com",
+    "https://www.github.com"
+  ]
+}
