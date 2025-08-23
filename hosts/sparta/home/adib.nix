@@ -199,6 +199,7 @@
     configFile = {
       nvim.source = "./dots/nvim";
       "swayosd/config.toml".source = "./dots/swayosd.toml";
+      rofi.source = "./dots/rofi";
     };
     mimeApps = {
       enable = true;
