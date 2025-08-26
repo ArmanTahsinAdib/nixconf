@@ -10,25 +10,18 @@
     ];
     themes = {
       dracula = {
-        src = pkgs.fetchFromGitHub {
-          "owner" = "dracula";
-          "repo" = "sublime";
-          "rev" = "d490b57c08f3d110ff61a07ec6edcc1ed9e24a63";
-          "hash" = "sha256-7veVVrLPW3T7KkkelDmgPW5kp+b12naKSKwCXBgjL1k=";
+        src = pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/dracula/sublime/refs/heads/master/Dracula.tmTheme";
+          hash = "sha256-Z2f+fPWidZ0QggcVb1AMGJo97CFr1vT2C5tLwJ+/ilo=";
         };
-        file = "Dracula.tmTheme";
       };
-
       catppuccin-mocha = {
-        src = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "bat";
-          rev = "6810349b28055dce54076712fc05fc68da4b8ec0";
-          sha256 = "sha256-lJapSgRVENTrbmpVyn+UQabC9fpV1G1e+CdlJ090uvg=";
+        src = pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/catppuccin/bat/refs/heads/main/themes/Catppuccin%20Mocha.tmTheme";
+          name = "Catppuccin Mocha.tmTheme";
+          hash = "sha256-OVVm8IzrMBuTa5HAd2kO+U9662UbEhVT8gHJnCvUqnc=";
         };
-        file = "themes/Catppuccin Mocha.tmTheme";
       };
-
     };
 
   };

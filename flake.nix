@@ -8,7 +8,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -73,6 +73,7 @@
       disko,
       agenix,
       home-manager,
+      nix-flatpak,
       neovim-nightly-overlay,
       waybar-overlay,
       nix-index-database,
@@ -109,6 +110,8 @@
             nix-index-database.nixosModules.nix-index
 
             home-manager.nixosModules.home-manager
+
+            nix-flatpak.nixosModules.nix-flatpak
             {
               programs.nix-index-database.comma.enable = true;
               nixpkgs.overlays = overlays;

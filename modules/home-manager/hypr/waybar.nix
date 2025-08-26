@@ -214,7 +214,7 @@
 
       "custom/power" = {
         format = "⏻";
-        on-click = "${pkgs.wlogout}/bin/wlogout";
+        on-click = "${pkgs.wlogout}/bin/wlogout -s";
         tooltip = false;
       };
 

@@ -1,6 +1,6 @@
 {
   pkgs,
-   inputs,
+  inputs,
   ...
 }:
 let
@@ -103,7 +103,10 @@ in
     upower.enable = true;
     libinput.enable = true;
     openssh.enable = true;
-
+    flatpak = {
+      enable = true;
+      packages = [ "page.codeberg.libre_menu_editor.LibreMenuEditor" ];
+    };
     locate = {
       enable = true;
       interval = "4hours";
