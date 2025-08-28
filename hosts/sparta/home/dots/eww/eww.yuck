@@ -1,0 +1,15 @@
+(defpoll time :interval 1 "date '+%H:%M'")
+
+(defwidget clock_widget []
+  (box :orientation "h"
+    :halign "start"
+    :valign "end"
+    :class "clock-box"
+    (label :text "${time}")))
+
+(defwindow clock_window
+  :monitor 0
+  :geometry (geometry :x "100px" :y "100px" :width "100px" :height "50px" :anchor "bottom left")
+  :stacking "bottom"
+  :focusable false
+  (clock_widget))

@@ -1,0 +1,9 @@
+
+function tls() {
+  command tldr `tldr -l | fzf --preview 'tldr --color=always --compact {}' --style full --no-border +m --reverse` 2>/dev/null || true
+}
+
+export GOOGLE_SEARCH_API_KEY=AIzaSyBDSep902JN4Tl_aRyjGIWiNjG6Izu3NBA
+export AVANTE_GEMINI_API_KEY=AIzaSyCNWxjFx0s0mokoNdpAnjGi32U2dpykeFs
+export TAVILY_API_KEY=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
+

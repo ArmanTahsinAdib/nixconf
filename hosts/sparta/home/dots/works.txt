@@ -1,0 +1,28 @@
+1.  fcitx5
+2.  gnome-keyring
+3.  polkit
+4.  brave with programs.chromium
+5.  catppuccin nix
+6.  fonts
+7.  file
+8.  killall
+9.  udiskie
+10. gawk
+11. dconf
+12. gsettings
+13. satty
+14. file editing with sudo in neovim
+15. Networkmanager dispatcher with etc.*
+16. pinta
+17. nh
+18. cachix
+19. comma
+20. tree
+21. flakehub
+22. tokei
+23. apple-emoji-icons
+24. vimix grub
+25. nix-search-tv
+26. direnv
+27. nix-health
+28. taskwarrior
